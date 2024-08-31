@@ -82,7 +82,7 @@ class Main {
     }
 
     static boolean isRomanNumber(String str) {
-        return str.matches("[IVXLC]+");
+        return str.matches("[I]{1,3}|IV|V|VI|VII|VIII|IX|X");
     }
 
     static boolean isArabicNumber(String str) {
@@ -107,12 +107,13 @@ class Main {
     static int romanToArabic(String roman) {
         int total = 0;
         int prevValue = 0;
+
         for (char ch : roman.toCharArray()) {
             int value = romanValue(ch);
             total += value;
 
             if (prevValue < value) {
-                total -= 2 * prevValue; // учесть вычитание
+                total -= 2 * prevValue;
             }
             prevValue = value;
         }
